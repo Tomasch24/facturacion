@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Runtime.CompilerServices;
 using ConexionDatos;
 using Microsoft.Data.SqlClient;
@@ -33,6 +34,13 @@ namespace capa_negocios
         //TODO Se utiliza el "override" para sobrescribir el tipo
         public override string Tipo => "Credito";
     }
+
+
+
+
+
+
+
     public class FacturaDal
     {
         //TODO Metodo para ingresar los datos de la factura
@@ -44,7 +52,6 @@ namespace capa_negocios
             using (SqlConnection conn = new SqlConnection(data.conexion))
             {
                 //TODO se abre la base de datos
-
                 conn.Open();
 
                 // TODO comando sql para que se guarden los datos que inserte el usuario en la base de datos
@@ -62,10 +69,40 @@ namespace capa_negocios
 
                 retorna = cmd.ExecuteNonQuery();
 
+                conn.Close();
             }
             return retorna;
         }
     }
+
+    public class GFactura
+    {
+       
+        public void GenerarFactura()
+        {
+            DataTable dt = new DataTable();
+
+            FacturaDatos data = new FacturaDatos();
+           using (SqlConnection conn = new SqlConnection(data.conexion))
+           {
+               SqlDataAdapter adapt;
+               conn.Open();
+               adapt = new SqlDataAdapter("SELECT * FROM Factura", conn);
+
+               adapt.Fill(dt);
+
+               conn.Close();
+           }
+        
+           
+      
+        }
+
+        
+    }
+
+
+
 }
     
 

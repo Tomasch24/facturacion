@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\capa_negocios\capa_negocios.csproj" />
-    <ProjectReference Include="..\facturacion\Capa_Datos.csproj" />
   </ItemGroup>
 
   <ItemGroup>

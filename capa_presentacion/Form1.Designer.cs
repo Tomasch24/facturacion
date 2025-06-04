@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             lblCliente = new Label();
             lblTelef = new Label();
             lblRnc = new Label();
@@ -40,8 +44,6 @@
             lblSistema = new Label();
             txtCliente = new TextBox();
             txtDescripcion = new TextBox();
-            txtPrecio = new TextBox();
-            txtCantidad = new TextBox();
             dtpFecha = new DateTimePicker();
             button1 = new Button();
             cbTipo = new ComboBox();
@@ -50,8 +52,11 @@
             label1 = new Label();
             txtTelef1 = new MaskedTextBox();
             txtRnc = new MaskedTextBox();
+            txtPrecio = new TextBox();
+            txtCantidad = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)facturaDalBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvFactura).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtCantidad).BeginInit();
             SuspendLayout();
             // 
             // lblCliente
@@ -169,35 +174,25 @@
             // 
             // txtDescripcion
             // 
+            txtDescripcion.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtDescripcion.Location = new Point(164, 430);
             txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(318, 31);
+            txtDescripcion.Size = new Size(318, 28);
             txtDescripcion.TabIndex = 5;
             txtDescripcion.TextChanged += txtDescripcion_TextChanged;
             // 
-            // txtPrecio
-            // 
-            txtPrecio.Location = new Point(164, 493);
-            txtPrecio.Name = "txtPrecio";
-            txtPrecio.Size = new Size(318, 31);
-            txtPrecio.TabIndex = 6;
-            // 
-            // txtCantidad
-            // 
-            txtCantidad.Location = new Point(164, 537);
-            txtCantidad.Name = "txtCantidad";
-            txtCantidad.Size = new Size(318, 31);
-            txtCantidad.TabIndex = 7;
-            txtCantidad.TextChanged += txtCantidad_TextChanged;
-            // 
             // dtpFecha
             // 
+            dtpFecha.CustomFormat = "dd/mm/aaaa";
             dtpFecha.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dtpFecha.Format = DateTimePickerFormat.Short;
             dtpFecha.Location = new Point(164, 276);
+            dtpFecha.MaxDate = new DateTime(2025, 6, 3, 0, 0, 0, 0);
+            dtpFecha.MinDate = new DateTime(2025, 6, 3, 0, 0, 0, 0);
             dtpFecha.Name = "dtpFecha";
             dtpFecha.Size = new Size(318, 28);
             dtpFecha.TabIndex = 4;
+            dtpFecha.Value = new DateTime(2025, 6, 3, 0, 0, 0, 0);
             dtpFecha.ValueChanged += dtpFecha_ValueChanged;
             // 
             // button1
@@ -207,17 +202,19 @@
             button1.Location = new Point(147, 656);
             button1.Name = "button1";
             button1.Size = new Size(155, 51);
-            button1.TabIndex = 24;
+            button1.TabIndex = 9;
             button1.Text = "Guardar";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // cbTipo
             // 
+            cbTipo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbTipo.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbTipo.FormattingEnabled = true;
             cbTipo.Location = new Point(164, 584);
             cbTipo.Name = "cbTipo";
-            cbTipo.Size = new Size(318, 33);
+            cbTipo.Size = new Size(318, 28);
             cbTipo.TabIndex = 8;
             cbTipo.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
@@ -228,11 +225,38 @@
             dgvFactura.AllowUserToResizeColumns = false;
             dgvFactura.AllowUserToResizeRows = false;
             dgvFactura.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.SkyBlue;
+            dataGridViewCellStyle1.Font = new Font("Times New Roman", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvFactura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvFactura.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvFactura.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvFactura.EnableHeadersVisualStyles = false;
             dgvFactura.Location = new Point(556, 94);
             dgvFactura.Name = "dgvFactura";
             dgvFactura.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvFactura.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvFactura.RowHeadersWidth = 62;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dgvFactura.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvFactura.Size = new Size(761, 530);
             dgvFactura.TabIndex = 26;
             dgvFactura.TabStop = false;
@@ -257,6 +281,7 @@
             txtTelef1.Name = "txtTelef1";
             txtTelef1.Size = new Size(318, 30);
             txtTelef1.TabIndex = 2;
+            txtTelef1.MaskInputRejected += txtTelef1_MaskInputRejected;
             // 
             // txtRnc
             // 
@@ -267,12 +292,30 @@
             txtRnc.Size = new Size(318, 28);
             txtRnc.TabIndex = 3;
             // 
+            // txtPrecio
+            // 
+            txtPrecio.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPrecio.Location = new Point(164, 493);
+            txtPrecio.Name = "txtPrecio";
+            txtPrecio.Size = new Size(318, 28);
+            txtPrecio.TabIndex = 6;
+            // 
+            // txtCantidad
+            // 
+            txtCantidad.Location = new Point(164, 535);
+            txtCantidad.Name = "txtCantidad";
+            txtCantidad.Size = new Size(318, 31);
+            txtCantidad.TabIndex = 7;
+            txtCantidad.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            txtCantidad.ValueChanged += txtCantidad_ValueChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Silver;
             ClientSize = new Size(1392, 792);
+            Controls.Add(txtCantidad);
             Controls.Add(txtRnc);
             Controls.Add(txtTelef1);
             Controls.Add(label1);
@@ -280,7 +323,6 @@
             Controls.Add(cbTipo);
             Controls.Add(button1);
             Controls.Add(dtpFecha);
-            Controls.Add(txtCantidad);
             Controls.Add(txtPrecio);
             Controls.Add(txtDescripcion);
             Controls.Add(txtCliente);
@@ -299,6 +341,7 @@
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)facturaDalBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvFactura).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtCantidad).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -316,8 +359,6 @@
         private TextBox txtCliente;
         private TextBox txtTelef;
         private TextBox txtDescripcion;
-        private TextBox txtPrecio;
-        private TextBox txtCantidad;
         private DateTimePicker dtpFecha;
         private Button button1;
         private ComboBox cbTipo;
@@ -326,5 +367,7 @@
         private Label label1;
         private MaskedTextBox txtTelef1;
         private MaskedTextBox txtRnc;
+        private TextBox txtPrecio;
+        private NumericUpDown txtCantidad;
     }
 }

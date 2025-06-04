@@ -41,14 +41,23 @@ namespace capa_presentacion
             else
                 factura = new FacturaCredito();
 
+            decimal precio;
+
+            if (!decimal.TryParse(txtPrecio.Text, out precio))
+            {
+                MessageBox.Show("El precio ingresado no es válido. Por favor igrese un valor numerico.", "Error de formato");
+                return;
+            }
+            factura.Precio = precio;
+
+
             factura.Cliente = txtCliente.Text;
-            factura.Telefono = txtTelef.Text;
+            factura.Telefono = txtTelef1.Text;
             factura.Rnc = txtRnc.Text;
             factura.Fecha = dtpFecha.Value;
             factura.Descripcion = txtDescripcion.Text;
-            factura.Precio = decimal.Parse(txtPrecio.Text);
+            //factura.Precio = decimal.Parse(txtPrecio.Text);
             factura.Cantidad = int.Parse(txtCantidad.Text);
-
 
 
             //
@@ -68,11 +77,10 @@ namespace capa_presentacion
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
-
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            //se añaden contado y credito para el CB del tipo de factura
+            //TODO se añaden contado y credito para el CB del tipo de factura
             cbTipo.Items.Add("Contado");
             cbTipo.Items.Add("Crédito");
             cbTipo.SelectedIndex = 0;
@@ -83,7 +91,7 @@ namespace capa_presentacion
         }
         private void txtTipo_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -129,6 +137,16 @@ namespace capa_presentacion
         private void txtCantidad_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtTelef1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void txtCantidad_ValueChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
