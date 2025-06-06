@@ -82,12 +82,10 @@ namespace capa_presentacion
             }
             factura.Precio = precio;
 
-
             factura.Telefono = txtTelef1.Text;
             factura.Rnc = txtRnc.Text;
             factura.Fecha = dtpFecha.Value;
             factura.Cantidad = int.Parse(txtCantidad.Text);
-
 
             //TODO captura de exito o error al infresar datos
             int result = FacturaDal.IngresarDatos(factura);

@@ -34,13 +34,6 @@ namespace capa_negocios
         //TODO Se utiliza el "override" para sobrescribir el tipo
         public override string Tipo => "Credito";
     }
-
-
-
-
-
-
-
     public class FacturaDal
     {
         //TODO Metodo para ingresar los datos de la factura
@@ -90,12 +83,6 @@ namespace capa_negocios
                 conn.Close();
             }
         }
-    }
-
-    public class GFactura
-    {
-       
-       
     }
 }
     
