@@ -73,36 +73,30 @@ namespace capa_negocios
             }
             return retorna;
         }
-    }
 
-    public class GFactura
-    {
-       
         public void GenerarFactura()
         {
             DataTable dt = new DataTable();
 
             FacturaDatos data = new FacturaDatos();
-           using (SqlConnection conn = new SqlConnection(data.conexion))
-           {
-               SqlDataAdapter adapt;
-               conn.Open();
-               adapt = new SqlDataAdapter("SELECT * FROM Factura", conn);
+            using (SqlConnection conn = new SqlConnection(data.conexion))
+            {
+                SqlDataAdapter adapt;
+                conn.Open();
+                adapt = new SqlDataAdapter("SELECT * FROM Factura", conn);
 
-               adapt.Fill(dt);
-
-               conn.Close();
-           }
-        
-           
-      
+                adapt.Fill(dt);
+                
+                conn.Close();
+            }
         }
-
-        
     }
 
-
-
+    public class GFactura
+    {
+       
+       
+    }
 }
     
 

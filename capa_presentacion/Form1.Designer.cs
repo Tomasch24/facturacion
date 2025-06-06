@@ -167,6 +167,7 @@
             // 
             txtCliente.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtCliente.Location = new Point(164, 115);
+            txtCliente.MaxLength = 20;
             txtCliente.Name = "txtCliente";
             txtCliente.Size = new Size(318, 28);
             txtCliente.TabIndex = 1;
@@ -176,6 +177,7 @@
             // 
             txtDescripcion.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtDescripcion.Location = new Point(164, 430);
+            txtDescripcion.MaxLength = 50;
             txtDescripcion.Name = "txtDescripcion";
             txtDescripcion.Size = new Size(318, 28);
             txtDescripcion.TabIndex = 5;
